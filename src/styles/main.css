@@ -16,22 +16,16 @@ svg {
 }
 
 @font-face {
-  font-family: 'Work Sans';
-  src: local('Work Sans Regular') url('/fonts/WorkSans-Regular.ttf')
+  font-family: 'Kumbh Sans';
+  src: local('Kumbh Sans Regular') url('/fonts/KumbhSans-Regular.ttf')
     format('truetype');
   font-style: normal;
   font-weight: 400;
 }
+
 @font-face {
-  font-family: 'Work Sans';
-  src: local('Work Sans SemiBold') url('/fonts/WorkSans-Semibold.ttf')
-    format('truetype');
-  font-style: normal;
-  font-weight: 600;
-}
-@font-face {
-  font-family: 'Work Sans';
-  src: local('Work Sans Bold') url('/fonts/WorkSans-Bold.ttf')
+  font-family: 'Kumbh Sans';
+  src: local('Kumbh Sans Bold') url('/fonts/KumbhSans-Bold.ttf')
     format('truetype');
   font-style: normal;
   font-weight: 700;
@@ -40,15 +34,15 @@ svg {
 :root {
   /* colors */
   --bkg: hsl(0, 0%, 100%);
-  --muted: hsl(275, 100%, 97%);
+  --muted: hsl(240, 5%, 91%);
   --text-muted: hsl(292, 16%, 49%);
-  --text: hsl(292, 42%, 14%);
+  --text: hsl(237, 12%, 33%);
   --accent: hsl(281, 83%, 54%);
 
   /* fonts */
-  --fs-sm: 1rem;
-  --fs-md: 1.25rem;
-  --fs-lg: 1.5rem;
+  --fs-sm: 12px;
+  --fs-md: 14px;
+  --fs-lg: 18px;
 
   /* spacing */
   --space-xs: 2px;
@@ -63,9 +57,9 @@ svg {
 }
 
 body {
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Kumbh Sans', sans-serif;
   font-weight: 400;
-  background-color: var(--muted);
+  background: linear-gradient(hsl(273, 75%, 66%), hsl(240, 73%, 65%));
   font-size: var(--fs-sm);
   color: var(--text);
   display: grid;
