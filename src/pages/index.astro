@@ -4,8 +4,8 @@ import Accordion from '../component/Accordion.astro';
 
 import { Image } from 'astro:assets';
 
-import desktopBGImage from '../images/bg-pattern-desktop.svg';
-import mobileBGImage from '../images/bg-pattern-mobile.svg';
+import desktopBGImage from '../images/illustration-woman-online-desktop.svg';
+import mobileBGImage from '../images/illustration-woman-online-mobile.svg';
 
 const items = await getCollection('faqs');
 
@@ -22,25 +22,24 @@ import '../styles/main.css';
   </head>
   <body>
     <main>
-      <div class='wrapper'>
-        <Accordion
-          accordionItems={items.map(item => item.data)}
-          title='FAQs'
-          isFirstExpanded={true}
-          isOnlyOneExpandable={true}
-        >
-          <Image
-            src={desktopBGImage}
-            alt='desktop background'
-            class='only-desktop'
-          />
-          <Image
-            src={mobileBGImage}
-            alt='mobile background'
-            class='only-mobile'
-          />
-        </Accordion>
+      <div class='illustration'>
+        <Image
+          src={desktopBGImage}
+          alt='desktop background'
+          class='illustration-image desktop'
+        />
+        <Image
+          src={mobileBGImage}
+          alt='mobile background'
+          class='illustration-image mobile'
+        />
       </div>
+      <Accordion
+        accordionItems={items.map(item => item.data)}
+        title='FAQ'
+        isFirstExpanded={true}
+        isOnlyOneExpandable={true}
+      />
     </main>
   </body>
 </html>

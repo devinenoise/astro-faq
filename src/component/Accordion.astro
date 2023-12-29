@@ -25,12 +25,12 @@ const { accordionItems, title, isFirstExpanded, isOnlyOneExpandable } =
   data-isOnlyOneExpandable={isOnlyOneExpandable}
   class='acc'
 >
-  <div class='title'>
+  <div class='acc-title'>
     <h2 id={slugify(title)}>{title}</h2>
   </div>
   {
     accordionItems.map((item, index) => (
-      <div class='item'>
+      <div class='acc-item'>
         <button
           id={`question-${slugify(title)}-${index}`}
           aria-controls={`answer-${slugify(title)}-${index}`}

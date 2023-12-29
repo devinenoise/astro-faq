@@ -17,16 +17,14 @@ svg {
 
 @font-face {
   font-family: 'Kumbh Sans';
-  src: local('Kumbh Sans Regular') url('/fonts/KumbhSans-Regular.ttf')
-    format('truetype');
+  src: url('/fonts/KumbhSans-Regular.ttf') format('truetype');
   font-style: normal;
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'Kumbh Sans';
-  src: local('Kumbh Sans Bold') url('/fonts/KumbhSans-Bold.ttf')
-    format('truetype');
+  src: url('/fonts/KumbhSans-Bold.ttf') format('truetype');
   font-style: normal;
   font-weight: 700;
 }
@@ -61,43 +59,77 @@ body {
   background: linear-gradient(hsl(273, 75%, 66%), hsl(240, 73%, 65%));
   font-size: var(--fs-sm);
   color: var(--text);
-  display: grid;
-  place-items: center;
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.wrapper {
-  max-width: 650px;
-  display: grid;
-  gap: var(--space-xxl);
-  align-items: start;
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bkg);
+  border-radius: var(--rounded);
+  margin-inline: var(--space-xxl);
+  padding: var(--space-xxl);
+  padding-top: 0;
+  position: relative;
 }
 
-.icon-star {
-  width: 24px;
+@media (min-width: 1440px) {
+  main {
+    flex-direction: row;
+    align-items: center;
+    padding: var(--space-xxl);
+  }
 }
 
 [aria-expanded='true'] > .icon-arrow-down {
   transform: rotate(180deg);
 }
 
-.only-desktop {
-  display: none;
+@media (max-width: 1439px) {
+  .illustration {
+    height: 100px;
+  }
 }
-.absolute-top {
-  position: absolute;
-  top: 0;
-  z-index: -1;
-  left: 0;
-  right: 0;
+
+.illustration {
+  transform: translateY(-110px);
 }
 
 @media (min-width: 1440px) {
-  .only-mobile {
+  .illustration {
+    transform: translateX(-100px);
+  }
+}
+
+.illustration-image {
+  position: relative;
+}
+
+.illustration-image:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  box-shadow: -50px 80px 4px 10px rgba(237, 202, 237, 1);
+  transform: rotate(10deg);
+}
+
+.desktop {
+  display: none;
+}
+
+@media (min-width: 1440px) {
+  .mobile {
     display: none;
   }
-  .only-desktop {
+  .desktop {
     display: block;
   }
 }
