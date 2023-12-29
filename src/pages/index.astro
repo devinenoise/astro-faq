@@ -18,6 +18,7 @@ const items = await getCollection('faqs');
       accordionItems={items.map(item => item.data)}
       title='FAQs'
       isFirstExpanded={true}
+      isOnlyOneExpandable={true}
     />
     <Accordion
       accordionItems={items.map(item => item.data)}
