@@ -23,6 +23,7 @@ const items = await getCollection('faqs');
     <Accordion
       accordionItems={items.map(item => item.data)}
       title='Unique Title'
+      isFirstExpanded={false}
     />
   </body>
 </html>

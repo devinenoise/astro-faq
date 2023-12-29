@@ -141,16 +141,16 @@ const { accordionItems, title, isFirstExpanded, isOnlyOneExpandable } =
         // is the current button open?
         const isExpanded = isAriaExpanded(btn);
 
-        // check if all others should close?
+        // check if all others should close
         if (isOnlyOneExpandable) {
           accBtns.forEach(setAriaExpandedFalse);
         }
 
+        // if already open do nothing
+        if (isOnlyOneExpandable && isExpanded) return;
+
         // expand if it was previously closed
-        if (isOnlyOneExpandable && isExpanded) {
-        } else {
-          toggleAriaExpanded(btn);
-        }
+        toggleAriaExpanded(btn);
       })
     );
     acc.addEventListener('keydown', e => {
