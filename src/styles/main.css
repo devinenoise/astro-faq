@@ -85,8 +85,6 @@ body {
   width: 24px;
 }
 
-
-
 [aria-expanded='true'] > .icon-arrow-down {
   transform: rotate(180deg);
 }
@@ -102,7 +100,7 @@ body {
   right: 0;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 1440px) {
   .only-mobile {
     display: none;
   }

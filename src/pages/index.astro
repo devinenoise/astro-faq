@@ -22,23 +22,24 @@ import '../styles/main.css';
   </head>
   <body>
     <main>
-      <Image
-        src={desktopBGImage}
-        alt='desktop background'
-        class='only-desktop absolute-top'
-      />
-      <Image
-        src={mobileBGImage}
-        alt='mobile background'
-        class='only-mobile absolute-top'
-      />
       <div class='wrapper'>
         <Accordion
           accordionItems={items.map(item => item.data)}
           title='FAQs'
           isFirstExpanded={true}
           isOnlyOneExpandable={true}
-        />
+        >
+          <Image
+            src={desktopBGImage}
+            alt='desktop background'
+            class='only-desktop'
+          />
+          <Image
+            src={mobileBGImage}
+            alt='mobile background'
+            class='only-mobile'
+          />
+        </Accordion>
       </div>
     </main>
   </body>
