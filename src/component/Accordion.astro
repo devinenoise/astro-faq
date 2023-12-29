@@ -1,7 +1,7 @@
 ---
 import slugify from 'slugify';
 
-import { Icon } from 'astro-icon';
+import { Icon } from 'astro-icon/components';
 
 import type { CollectionEntry } from 'astro:content';
 
@@ -28,10 +28,11 @@ const { accordionItems, title, isFirstExpanded, isOnlyOneExpandable } =
   </div>
   {
     accordionItems.map((item, index) => (
-      <>
+      <div class='item'>
         <button
           id={`question-${slugify(title)}-${index}`}
           aria-controls={`answer-${slugify(title)}-${index}`}
+          aria-expanded='false'
           class='acc-question'
         >
           <span>{item.question}</span>
@@ -45,7 +46,7 @@ const { accordionItems, title, isFirstExpanded, isOnlyOneExpandable } =
         >
           {item.answer}
         </div>
-      </>
+      </div>
     ))
   }
 </section>
@@ -154,10 +155,11 @@ const { accordionItems, title, isFirstExpanded, isOnlyOneExpandable } =
         }
 
         // if already open do nothing
-        if (isOnlyOneExpandable && isExpanded) return;
-
-        // expand if it was previously closed
-        toggleAriaExpanded(btn);
+        if (isOnlyOneExpandable && isExpanded) {
+        } else {
+          // expand if it was previously closed
+          toggleAriaExpanded(btn);
+        }
       })
     );
     acc.addEventListener('keydown', e => {
