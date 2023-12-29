@@ -1,6 +1,8 @@
 ---
 import slugify from 'slugify';
 
+import { Icon } from 'astro-icon';
+
 import type { CollectionEntry } from 'astro:content';
 
 type Props = {
@@ -20,7 +22,10 @@ const { accordionItems, title, isFirstExpanded, isOnlyOneExpandable } =
   data-isOnlyOneExpandable={isOnlyOneExpandable}
   class='acc'
 >
-  <h2 id={slugify(title)}>{title}</h2>
+  <div class='title'>
+    <Icon name='icon-star' alt='stars' width='24' />
+    <h2 id={slugify(title)}>{title}</h2>
+  </div>
   {
     accordionItems.map((item, index) => (
       <>
@@ -29,7 +34,9 @@ const { accordionItems, title, isFirstExpanded, isOnlyOneExpandable } =
           aria-controls={`answer-${slugify(title)}-${index}`}
           class='acc-question'
         >
-          {item.question}
+          <span>{item.question}</span>
+          <Icon name='icon-plus' width='32' class='aria-expanded-hide' />
+          <Icon name='icon-minus' width='32' class='aria-expanded-show' />
         </button>
         <div
           aria-labelledby={`question-${slugify(title)}-${index}`}
