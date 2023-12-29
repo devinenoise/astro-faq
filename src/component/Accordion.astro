@@ -1,0 +1,86 @@
+---
+import slugify from 'slugify';
+
+import type { CollectionEntry } from 'astro:content';
+
+type Props = {
+  accordionItems: CollectionEntry<'faqs'>['data'][];
+  title: string;
+  isFirstExpanded?: boolean;
+  isOnlyOneExpanded?: boolean;
+};
+
+const { accordionItems, title, isFirstExpanded, isOnlyOneExpanded } =
+  Astro.props;
+---
+
+<section
+  aria-labelledby={slugify(title)}
+  data-isFirstExpanded={isFirstExpanded}
+  data-isOnlyOneExpancded={isOnlyOneExpanded}
+  class='accordion'
+>
+  <h2 id={slugify(title)}>{title}</h2>
+  {
+    accordionItems.map((item, index) => (
+      <>
+        <button
+          id={`question-${slugify(title)}-${index}`}
+          aria-controls={`answer-${slugify(title)}-${index}`}
+          class='accordion-question'
+        >
+          {item.question}
+        </button>
+        <div
+          aria-labelledby={`question-${slugify(title)}-${index}`}
+          id={`answer-${slugify(title)}-${index}`}
+          class='accordion-answer'
+        >
+          {item.answer}
+        </div>
+      </>
+    ))
+  }
+</section>
+
+<style>
+  section {
+    display: grid;
+    gap: 2rem;
+  }
+  .accordion-answer {
+    display: none;
+  }
+  .accordion-question[aria-expanded='true'] + .accordion-answer {
+    display: block;
+  }
+</style>
+
+<script>
+  const accordions = [
+    ...document.querySelectorAll('.accordion')
+  ] as HTMLDivElement[];
+
+  const toggleAriaExpanded = (btn: HTMLButtonElement) => {
+    const isExpanded = JSON.parse(
+      btn.getAttribute('aria-expanded') as string
+    ) as boolean;
+    btn.setAttribute('aria-expanded', `${!isExpanded}`);
+  };
+
+  accordions.forEach(accordion => {
+    // show first expanded if data-isFirstExpanded is true
+    const isFirstExpanded = accordion.hasAttribute('data-isFirstExpanded');
+    if (isFirstExpanded) {
+      const firstBtn = accordion.querySelector(
+        '.accordion-question'
+      ) as HTMLButtonElement;
+      toggleAriaExpanded(firstBtn);
+    }
+
+    // set event listeners
+    accordion.addEventListener('click', e => {
+      console.log({ current: e.currentTarget, target: e.target });
+    });
+  });
+</script>
