@@ -2,7 +2,10 @@
 import { getCollection } from 'astro:content';
 import Accordion from '../component/Accordion.astro';
 
-import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+
+import desktopBGImage from '../images/bg-pattern-desktop.svg';
+import mobileBGImage from '../images/bg-pattern-mobile.svg';
 
 const items = await getCollection('faqs');
 
@@ -19,27 +22,24 @@ import '../styles/main.css';
   </head>
   <body>
     <main>
-      <Icon
-        name='background-pattern-desktop'
+      <Image
+        src={desktopBGImage}
+        alt='desktop background'
         class='only-desktop absolute-top'
       />
-      <Icon name='background-pattern-mobile' class='only-mobile absolute-top' />
+      <Image
+        src={mobileBGImage}
+        alt='mobile background'
+        class='only-mobile absolute-top'
+      />
       <div class='wrapper'>
         <Accordion
-          accordionItems={items.map(i => i.data)}
+          accordionItems={items.map(item => item.data)}
           title='FAQs'
           isFirstExpanded={true}
           isOnlyOneExpandable={true}
         />
       </div>
-      <style>
-        .wrapper {
-          max-width: 650px;
-          display: grid;
-          gap: var(--space-xxl);
-          align-items: start;
-        }
-      </style>
     </main>
   </body>
 </html>

@@ -23,7 +23,7 @@ const { accordionItems, title, isFirstExpanded, isOnlyOneExpandable } =
   class='acc'
 >
   <div class='title'>
-    <Icon name='icon-star' alt='stars' width='24' />
+    <Icon name='icon-star' class='icon-star' />
     <h2 id={slugify(title)}>{title}</h2>
   </div>
   {
@@ -36,8 +36,7 @@ const { accordionItems, title, isFirstExpanded, isOnlyOneExpandable } =
           class='acc-question'
         >
           <span>{item.question}</span>
-          <Icon name='icon-plus' width='32' class='aria-expanded-hide' />
-          <Icon name='icon-minus' width='32' class='aria-expanded-show' />
+          <Icon name='icon-arrow-down' class='icon-arrow-down' />
         </button>
         <div
           aria-labelledby={`question-${slugify(title)}-${index}`}
@@ -91,7 +90,9 @@ const { accordionItems, title, isFirstExpanded, isOnlyOneExpandable } =
     border-radius: 6px;
     transition: box-shadow 100ms cubic-bezier(0.165, 0.84, 0.44, 1);
 
-    &:hover,
+    &:hover {
+      color: hsl(14, 88%, 65%);
+    }
     &:focus {
       color: var(--accent);
       outline: 2px solid transparent;

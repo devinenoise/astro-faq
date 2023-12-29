@@ -74,16 +74,21 @@ body {
   min-height: 100dvh;
 }
 
-[aria-expanded='false'] > .aria-expanded-show {
-  display: none;
+.wrapper {
+  max-width: 650px;
+  display: grid;
+  gap: var(--space-xxl);
+  align-items: start;
 }
 
-[aria-expanded='true'] > .aria-expanded-show {
-  display: block;
+.icon-star {
+  width: 24px;
 }
 
-[aria-expanded='true'] > .aria-expanded-hide {
-  display: none;
+
+
+[aria-expanded='true'] > .icon-arrow-down {
+  transform: rotate(180deg);
 }
 
 .only-desktop {
