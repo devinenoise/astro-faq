@@ -35,9 +35,8 @@ svg {
   /* colors */
   --bkg: hsl(0, 0%, 100%);
   --muted: hsl(240, 5%, 91%);
-  --text-muted: hsl(292, 16%, 49%);
   --text: hsl(237, 12%, 33%);
-  --accent: hsl(281, 83%, 54%);
+  --accent: hsl(14, 88%, 65%);
 
   /* fonts */
   --fs-sm: 12px;
